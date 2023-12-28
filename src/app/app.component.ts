@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AppComponent implements OnInit {
 
-  title = 'testeDating01';
+ // title = 'testeDating01';
   users:any;
   constructor(private http:HttpClient) {
   }
