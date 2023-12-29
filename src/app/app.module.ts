@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import {FormsModule} from "@angular/forms";
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
+import { HomeComponent } from './home/home.component';
 //import { NavSkipTestsComponent } from "./nav --skip-tests/nav --skip-tests.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent//,
+    NavComponent,
+    HomeComponent//,
     //NavSkipTestsComponent
   ],
   imports: [
