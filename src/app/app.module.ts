@@ -15,6 +15,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import {AppRoutingModule} from "./app-routing.module";
+import {ToastrModule} from "ngx-toastr";
 //import { NavSkipTestsComponent } from "./nav --skip-tests/nav --skip-tests.component";
 
 @NgModule({
@@ -35,7 +36,10 @@ import {AppRoutingModule} from "./app-routing.module";
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    BsDropdownModule
+    BsDropdownModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass:'toast-bottom-rigth'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
