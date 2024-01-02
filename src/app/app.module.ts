@@ -17,6 +17,7 @@ import { MessagesComponent } from './messages/messages.component';
 import {AppRoutingModule} from "./app-routing.module";
 //import {ToastrModule} from "ngx-toastr";
 import {SharedModule} from "./_modules/shared.module";
+import { TesteErrorComponent } from './errors/teste-error/teste-error.component';
 //import { NavSkipTestsComponent } from "./nav --skip-tests/nav --skip-tests.component";
 
 @NgModule({
@@ -28,7 +29,8 @@ import {SharedModule} from "./_modules/shared.module";
     MemberListComponent,
     MemberDetailComponent,
     ListsComponent,
-    MessagesComponent//,
+    MessagesComponent,
+    TesteErrorComponent//,
     //NavSkipTestsComponent
   ],
   imports: [
