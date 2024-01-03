@@ -19,6 +19,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {SharedModule} from "./_modules/shared.module";
 import { TesteErrorComponent } from './errors/teste-error/teste-error.component';
 import {ErrorInterceptor} from "./_interceptors/error.interceptor";
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 //import { NavSkipTestsComponent } from "./nav --skip-tests/nav --skip-tests.component";
 
 @NgModule({
@@ -31,7 +33,9 @@ import {ErrorInterceptor} from "./_interceptors/error.interceptor";
     MemberDetailComponent,
     ListsComponent,
     MessagesComponent,
-    TesteErrorComponent//,
+    TesteErrorComponent,
+    NotFoundComponent,
+    ServerErrorComponent//,
     //NavSkipTestsComponent
   ],
   imports: [
