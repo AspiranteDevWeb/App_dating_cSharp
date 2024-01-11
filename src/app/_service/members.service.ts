@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {Member} from "../_models/member";
+import {map} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,11 @@ export class MembersService {
 
   getMembers(){
     return this.http.get<Member[]>(this.baseUrl + 'users' , this.getHttpOptions())
+      .pipe(map((event: HttpEvent<Member[]> )=>{
+        if(event instanceof  HttpResponse){
+          return event.body;
+        } return [];
+      }))
   }
 
   getMember(username: string){
@@ -22,10 +28,10 @@ export class MembersService {
     const userString = localStorage.getItem('user');
     if(!userString)
       return {};
-        const user= JSON.parse(userString);
+    const user= JSON.parse(userString);
     return {
       header: new HttpHeaders({
-        Authorization: 'Bearer ' + user.token
+        Authorization: 'Bearer' + user.token
       })
     };
   }

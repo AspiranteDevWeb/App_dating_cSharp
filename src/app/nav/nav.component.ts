@@ -18,7 +18,7 @@ export class NavComponent implements OnInit{
   //loggedIn= false;
   //currentUser$: Observable<User | null> = of(null);
   constructor(public accountService: AccountService, private router: Router,
-              private toastr:ToastrService ) {
+              private toastr : ToastrService ) {
   }
 
   ngOnInit(): void {
