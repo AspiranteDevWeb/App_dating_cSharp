@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpEvent, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {Member} from "../_models/member";
@@ -15,9 +15,12 @@ export class MembersService {
   getMembers(){
     return this.http.get<Member[]>(this.baseUrl + 'users' , this.getHttpOptions())
       .pipe(map((event: HttpEvent<Member[]> )=>{
-        if(event instanceof  HttpResponse){
+        /*if(event instanceof  HttpResponse){
+          console.log('Members 222', event.body)
           return event.body;
-        } return [];
+        }*/
+        let auxMembers  = event as object;
+        return auxMembers as Array<Member>;
       }))
   }
 

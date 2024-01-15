@@ -14,12 +14,19 @@ export class MemberListComponent implements OnInit{
   }
 
   ngOnInit() {
+    var auxMembers = this.memberService.getMembers();
+    auxMembers.subscribe(member =>{
+      console.log("My members ",member )
+    })
     this.loadMembers();
   }
 
   loadMembers () {
     this.memberService.getMembers().subscribe({
-      next: members => this.members = members
+      next: members => {
+        console.log('Members', members)
+        this.members = members
+      }
     })
   }
 

@@ -21,6 +21,7 @@ import { TesteErrorComponent } from './errors/teste-error/teste-error.component'
 import {ErrorInterceptor} from "./_interceptors/error.interceptor";
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { MemberCardComponent } from './members/member-card/member-card.component';
 //import { NavSkipTestsComponent } from "./nav --skip-tests/nav --skip-tests.component";
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     MessagesComponent,
     TesteErrorComponent,
     NotFoundComponent,
-    ServerErrorComponent//,
+    ServerErrorComponent,
+    MemberCardComponent//,
     //NavSkipTestsComponent
   ],
   imports: [
