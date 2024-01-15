@@ -13,29 +13,19 @@ export class MembersService {
   }
 
   getMembers(){
-    return this.http.get<Member[]>(this.baseUrl + 'users' , this.getHttpOptions())
-      .pipe(map((event: HttpEvent<Member[]> )=>{
+    return this.http.get<Member[]>(this.baseUrl + 'users' );
+     // .pipe(map((event: HttpEvent<Member[]> )=>{
         /*if(event instanceof  HttpResponse){
           console.log('Members 222', event.body)
           return event.body;
         }*/
-        let auxMembers  = event as object;
-        return auxMembers as Array<Member>;
-      }))
+      //  let auxMembers  = event as object;
+     //   return auxMembers as Array<Member>;
+    //  }))
   }
 
   getMember(username: string){
-    return this.http.get<Member>(this.baseUrl + 'users/' + username, this.getHttpOptions())
+    return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
-  getHttpOptions() : any {
-    const userString = localStorage.getItem('user');
-    if(!userString)
-      return {};
-    const user= JSON.parse(userString);
-    return {
-      header: new HttpHeaders({
-        Authorization: 'Bearer' + user.token
-      })
-    };
-  }
+
 }
