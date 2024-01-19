@@ -26,6 +26,7 @@ import {JwtInterceptor} from "./_interceptors/jwt.interceptor";
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
 import {NgxGalleryModule} from "@kolkov/ngx-gallery";
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 //import { NavSkipTestsComponent } from "./nav --skip-tests/nav --skip-tests.component";
 
 @NgModule({
@@ -42,7 +43,8 @@ import {NgxGalleryModule} from "@kolkov/ngx-gallery";
     NotFoundComponent,
     ServerErrorComponent,
     MemberCardComponent,
-    MemberEditComponent//,
+    MemberEditComponent,
+    PhotoEditorComponent//,
     //NavSkipTestsComponent
   ],
   imports: [
