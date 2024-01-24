@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AccountService} from "../_service/account.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {ToastrService} from "ngx-toastr";
-import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -15,7 +15,8 @@ export class RegisterComponent implements OnInit{
   model:any={}
   registerForm: FormGroup = new FormGroup({});
 
-  constructor(private accountService: AccountService, private toastr: ToastrService) {
+  constructor(private accountService: AccountService, private toastr: ToastrService,
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -23,11 +24,16 @@ export class RegisterComponent implements OnInit{
   }
 
   initializeForm(){
-    this.registerForm= new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required,
-        Validators.minLength(4), Validators.maxLength(8)]),
-      confirmPassword: new FormControl('', [Validators.required, this.matchValue('password')]),
+    this.registerForm= this.fb.group({
+      gender:['male'],
+      username: ['', Validators.required],
+      knownAs: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required],
+      password: ['', [Validators.required,
+        Validators.minLength(4), Validators.maxLength(8)]],
+      confirmPassword: ['', [Validators.required, this.matchValue('password')]],
     })
     this.registerForm.controls['password'].valueChanges.subscribe({
       next: () => this.registerForm.controls['confirmPassword'].updateValueAndValidity()
