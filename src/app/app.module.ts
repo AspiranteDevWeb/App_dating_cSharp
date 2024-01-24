@@ -28,6 +28,7 @@ import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
 import {NgxGalleryModule} from "@kolkov/ngx-gallery";
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
 //import { NavSkipTestsComponent } from "./nav --skip-tests/nav --skip-tests.component";
 
 @NgModule({
@@ -46,7 +47,8 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
     MemberCardComponent,
     MemberEditComponent,
     PhotoEditorComponent,
-    TextInputComponent//,
+    TextInputComponent,
+    DatePickerComponent//,
     //NavSkipTestsComponent
   ],
   imports: [
