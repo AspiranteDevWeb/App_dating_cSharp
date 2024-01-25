@@ -3,6 +3,7 @@ import {AccountService} from "../_service/account.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {ToastrService} from "ngx-toastr";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -12,12 +13,13 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Valid
 export class RegisterComponent implements OnInit{
  // @Input() usersFromHomeComponent:any;
   @Output() cancelRegister = new EventEmitter();
-  model:any={}
+  //model:any={}
   registerForm: FormGroup = new FormGroup({});
   maxDate: Date = new Date();
+  validationErrors: string | undefined;
 
   constructor(private accountService: AccountService, private toastr: ToastrService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder, private router: Router) {
   }
 
   ngOnInit() {
@@ -48,23 +50,35 @@ export class RegisterComponent implements OnInit{
     }
   }
   register(){
-    console.log(this.registerForm?.value);
-   /* this.accountService.register(this.model).subscribe({
+
+    const dob = this.getDateOnly(this.registerForm.controls['dateOfBirth'].value);
+    const values = {...this.registerForm.value, dateOfBirth: dob};
+   // console.log(values);
+    //console.log(this.registerForm?.value);
+
+    this.accountService.register(values).subscribe({
       next: () => {
 
-        this.cancel();
+        this.router.navigateByUrl('/members');
       },
       error:error => {
-        this.toastr.error(error.error)
-          console.log(error)
+          this.validationErrors = error
+
       }
     })
-**/
+
 
   }
 
   cancel(){
     this.cancelRegister.emit(false);
+  }
+
+  private getDateOnly(dob: string | undefined) {
+    if (!dob) return;
+    let theDob = new Date(dob);
+    return new Date(theDob.setMinutes(theDob.getMinutes()-theDob.getTimezoneOffset()))
+      .toISOString().slice(0,10);
   }
 
 }
